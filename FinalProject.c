@@ -28,23 +28,26 @@ void gotoxy(int x,int y){
 
 void a_w(int i_y, int i_x){ // The character moves on the positive y-axis
         gotoxy(i_x, i_y+1); printf(" ");
-        gotoxy(i_x, i_y);printf("*");
-        usleep(80000);
+        gotoxy(i_x, i_y); printf("%c", 219);
+        fflush(stdout);
 }
 void a_a(int i_y, int i_x){
         gotoxy(i_x+1, i_y); printf(" ");
-        gotoxy(i_x, i_y);printf("*");
-        usleep(80000);
+        gotoxy(i_x, i_y);printf("\1");
+        fflush(stdout);
 }
 void a_s(int i_y, int i_x){
         gotoxy(i_x, i_y-1); printf(" ");
-        gotoxy(i_x, i_y);printf("*");
-        usleep(80000);
+        gotoxy(i_x, i_y);printf("\1");
+        fflush(stdout);
 }
 void a_d(int i_y, int i_x){
         gotoxy(i_x-1, i_y); printf(" ");
-        gotoxy(i_x, i_y);printf("*");
-        usleep(80000);
+        gotoxy(i_x, i_y);printf("\1");
+        fflush(stdout);
+}
+void character(){
+
 }
 void object(){
 
@@ -67,6 +70,7 @@ char arrow;
     {
         i_y--;
         a_w(i_y,i_x);
+        usleep(80000);
     }
         break;
 
@@ -75,6 +79,7 @@ char arrow;
     {
         i_x--;
         a_a(i_y,i_x);
+        usleep(20000);
     }
         break;
 
@@ -83,6 +88,7 @@ char arrow;
     {
         i_y++;
         a_s(i_y,i_x);
+        usleep(80000);
     }
         break;
 
@@ -91,6 +97,7 @@ char arrow;
     {
         i_x++;
         a_d(i_y,i_x);
+        usleep(20000);
     }
         break;
 
@@ -104,5 +111,4 @@ char arrow;
 
 
 
-    
     

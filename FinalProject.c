@@ -1,6 +1,6 @@
 /* This final project is for the asignature progamation, we scripted a algoritms from a minigame called "Iecsaroids"
 
-The game has a fun theme where the character can move freely around the map but will constantly be hit by objects that can knock him down. If they touch him, he loses. 
+The game has a fun theme where the character can move freely around the map but will constantly be hit by objects that can knock him down. If they touch him, he loses.
 The speed of the objects and the time are proportional.
 
 1- Lets do the movement player with WASD W(UP, ANIMATION UP), A(LEFT, ANIMATION LEFT), S(DOWN, ANIMATION DOWN), D(RIGHT, ANIMATION RIGHT)
@@ -15,12 +15,20 @@ The speed of the objects and the time are proportional.
 #include <conio.h>
 #include <stdlib.h>
 #include <unistd.h>
-int lenght=20, width=20, x=10, y=10, flag=0;
-void a_w(int y, int x, int flag){ // The character moves on the positive y-axis
-        printf("\b ");
-        y++;
-        flag = y;
-        /*gotoxy(x, y);*/ printf("*");
+#include <windows.h>
+
+void gotoxy(int x,int y){
+      HANDLE hcon;
+      hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+      COORD dwPos;
+      dwPos.X = x;
+      dwPos.Y= y;
+      SetConsoleCursorPosition(hcon,dwPos);
+ }
+
+void a_w(int i_y, int i_x){ // The character moves on the positive y-axis
+        gotoxy(i_x, i_y+1); printf(" ");
+        gotoxy(i_x, i_y);printf("*");
         usleep(80000);
 }
 void a_a(){
@@ -51,6 +59,9 @@ void speed(){
 
 }
 int main(){
+
+int lenght=20, width=20, i_x=10, i_y=10;
+
 while(1){
 char arrow;
     if(_kbhit()){
@@ -58,9 +69,10 @@ char arrow;
     switch (arrow)
     {
     case 'w':
-    if (flag < lenght)
+    if (i_y > 0)
     {
-        a_w(y,x,flag);
+        i_y--;
+        a_w(i_y,i_x);
     }
         break;
 
@@ -98,9 +110,10 @@ char arrow;
   }
 }
     system("pause");
-}    
-    
+}
 
-    
+
+
+
     
     

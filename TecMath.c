@@ -17,3 +17,5 @@ In fact, first we have to do the graphs of the points with gotoxy or any library
 
 #include <stdio.h>
 #include <stdlib.h>
+int main(){
+}

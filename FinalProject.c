@@ -14,4 +14,38 @@ The speed of the objects and the time are proportional.
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+void w(){
+
+}
+void a(){
+
+}
+void s(){
+
+}
+void d(){
+
+}
+void wa(){
+
+}
+void wd(){
+
+}
+void sd(){
+
+}
+void as(){
+
+}
+void object(){
+
+}
+void speed(){
+    
+}    
+    
+
+    
+    
     

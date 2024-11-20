@@ -22,7 +22,6 @@ void a_w(int y, int x, int flag){ // The character moves on the positive y-axis
         flag = y;
         /*gotoxy(x, y);*/ printf("*");
         usleep(80000);
-        return flag, y;
 }
 void a_a(){
 

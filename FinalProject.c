@@ -31,26 +31,20 @@ void a_w(int i_y, int i_x){ // The character moves on the positive y-axis
         gotoxy(i_x, i_y);printf("*");
         usleep(80000);
 }
-void a_a(){
-
+void a_a(int i_y, int i_x){
+        gotoxy(i_x+1, i_y); printf(" ");
+        gotoxy(i_x, i_y);printf("*");
+        usleep(80000);
 }
-void a_s(){
-
+void a_s(int i_y, int i_x){
+        gotoxy(i_x, i_y-1); printf(" ");
+        gotoxy(i_x, i_y);printf("*");
+        usleep(80000);
 }
-void a_d(){
-
-}
-void a_wa(){
-
-}
-void a_wd(){
-
-}
-void a_sd(){
-
-}
-void a_sa(){
-
+void a_d(int i_y, int i_x){
+        gotoxy(i_x-1, i_y); printf(" ");
+        gotoxy(i_x, i_y);printf("*");
+        usleep(80000);
 }
 void object(){
 
@@ -77,31 +71,27 @@ char arrow;
         break;
 
     case 'a':
-        a_a();
+    if (i_x > 0)
+    {
+        i_x--;
+        a_a(i_y,i_x);
+    }
         break;
 
     case 's':
-        a_s();
+    if (i_y < 100)
+    {
+        i_y++;
+        a_s(i_y,i_x);
+    }
         break;
 
     case 'd':
-        a_d();
-        break;
-
-    case 'wa':
-        a_wa();
-        break;
-
-    case 'wd':
-        a_wd();
-        break;
-
-    case 'sd':
-        a_sd();
-        break;
-
-    case 'sa':
-        a_sa();
+    if (i_x < 100)
+    {
+        i_x++;
+        a_d(i_y,i_x);
+    }
         break;
 
     default:
@@ -111,7 +101,6 @@ char arrow;
 }
     system("pause");
 }
-
 
 
 

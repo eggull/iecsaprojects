@@ -1,6 +1,6 @@
 /* This final project is for the asignature progamation, we scripted a algoritms from a minigame called "Iecsaroids"
 
-The game has a fun theme where the character can move freely around the map but will constantly be hit by objects that can knock him down. If they touch him, he loses. 
+The game has a fun theme where the character can move freely around the map but will constantly be hit by objects that can knock him down. If they touch him, he loses.
 The speed of the objects and the time are proportional.
 
 1- Lets do the movement player with WASD W(UP, ANIMATION UP), A(LEFT, ANIMATION LEFT), S(DOWN, ANIMATION DOWN), D(RIGHT, ANIMATION RIGHT)
@@ -15,33 +15,38 @@ The speed of the objects and the time are proportional.
 #include <conio.h>
 #include <stdlib.h>
 #include <unistd.h>
-int lenght=20, width=20, x=10, y=10, flag=0;
-void a_w(int y, int x, int flag){ // The character moves on the positive y-axis
-        printf("\b ");
-        y++;
-        flag = y;
-        /*gotoxy(x, y);*/ printf("*");
-        usleep(80000);
-}
-void a_a(){
+#include <windows.h>
 
-}
-void a_s(){
+void gotoxy(int x,int y){
+      HANDLE hcon;
+      hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+      COORD dwPos;
+      dwPos.X = x;
+      dwPos.Y= y;
+      SetConsoleCursorPosition(hcon,dwPos);
+ }
 
+void a_w(int i_y, int i_x){ // The character moves on the positive y-axis
+        gotoxy(i_x, i_y+1); printf(" ");
+        gotoxy(i_x, i_y); printf("%c", 219);
+        fflush(stdout);
 }
-void a_d(){
-
+void a_a(int i_y, int i_x){
+        gotoxy(i_x+1, i_y); printf(" ");
+        gotoxy(i_x, i_y);printf("\1");
+        fflush(stdout);
 }
-void a_wa(){
-
+void a_s(int i_y, int i_x){
+        gotoxy(i_x, i_y-1); printf(" ");
+        gotoxy(i_x, i_y);printf("\1");
+        fflush(stdout);
 }
-void a_wd(){
-
+void a_d(int i_y, int i_x){
+        gotoxy(i_x-1, i_y); printf(" ");
+        gotoxy(i_x, i_y);printf("\1");
+        fflush(stdout);
 }
-void a_sd(){
-
-}
-void a_sa(){
+void character(){
 
 }
 void object(){
@@ -51,6 +56,9 @@ void speed(){
 
 }
 int main(){
+
+int lenght=20, width=20, i_x=10, i_y=10;
+
 while(1){
 char arrow;
     if(_kbhit()){
@@ -58,38 +66,39 @@ char arrow;
     switch (arrow)
     {
     case 'w':
-    if (flag < lenght)
+    if (i_y > 0)
     {
-        a_w(y,x,flag);
+        i_y--;
+        a_w(i_y,i_x);
+        usleep(80000);
     }
         break;
 
     case 'a':
-        a_a();
+    if (i_x > 0)
+    {
+        i_x--;
+        a_a(i_y,i_x);
+        usleep(20000);
+    }
         break;
 
     case 's':
-        a_s();
+    if (i_y < 100)
+    {
+        i_y++;
+        a_s(i_y,i_x);
+        usleep(80000);
+    }
         break;
 
     case 'd':
-        a_d();
-        break;
-
-    case 'wa':
-        a_wa();
-        break;
-
-    case 'wd':
-        a_wd();
-        break;
-
-    case 'sd':
-        a_sd();
-        break;
-
-    case 'sa':
-        a_sa();
+    if (i_x < 100)
+    {
+        i_x++;
+        a_d(i_y,i_x);
+        usleep(20000);
+    }
         break;
 
     default:
@@ -98,9 +107,6 @@ char arrow;
   }
 }
     system("pause");
-}    
-    
+}
 
-    
-    
-    
+

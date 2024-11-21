@@ -27,8 +27,8 @@ void gotoxy(int x,int y){
  }
 
 void a_w(int i_y, int i_x){ // The character moves on the positive y-axis
-        gotoxy(i_x, i_y+1); printf(" ");
         gotoxy(i_x, i_y); printf("%c", 219);
+        gotoxy(i_x, i_y+1); printf(" ");
         fflush(stdout);
 }
 void a_a(int i_y, int i_x){
@@ -54,8 +54,14 @@ void a_wd(int i_y, int i_x){
 void character(){
 
 }
-void object(){
-
+void object_1(int i_x){ //Identificate the position of the client,
+        int x,y;
+        x=i_x;
+        y++;
+        gotoxy(x, y-1); printf(" ");
+        gotoxy(x, y);printf("\*");
+        fflush(stdout);
+        usleep(10000);
 }
 void speed(){
 
@@ -69,29 +75,40 @@ void speed(){
 int main(){
 
 int lenght=20, width=20, i_x=10, i_y=10;
-
+object_1(i_x);
 while(1){
-char arrow, arrow_1;
-    if(_kbhit()) //Fix the getch, when press a letter, for example; a after w, a is the new getch letter, but u held down the letter w and u stop pressing the letter a, w must be the new getch letter, but getch isn't reading the letter w. 
+char arrow, arrow_1, last_arrow;
+    if(_kbhit()) //Fix the getch, when press a letter, for example; a after w, a is the new getch letter, but u held down the letter w and u stop pressing the letter a, w must be the new getch letter, but getch isn't reading the letter w.
     {
         arrow = _getch();
-            if (_getch() == 'w')
-            {
-                arrow = 'w';
-            }
-        arrow_1 = _getch();
-        if(arrow_1 == 'd' && arrow == 'w')
+/*
+        arrow_1 = _getch(); //This will be the extra character (define the diag)
+        if(arrow == 'w')
         {
-            arrow = 'p'; // Diag to norest
+            last_arrow = 'w';
         }
+        if(arrow == 'a')
+        {
+            last_arrow = 'a';
+        }
+        if(arrow == 's')
+        {
+            last_arrow = 's';
+        }
+        if(arrow == 'd')
+        {
+            last_arrow = 'd';
+        }
+*/
+
     switch (arrow)
     {
     case 'w':
     if (i_y > 0)
     {
+        usleep(1000);
         i_y--;
         a_w(i_y,i_x);
-        usleep(1000);
     }
         break;
 
@@ -122,7 +139,7 @@ char arrow, arrow_1;
     }
         break;
 
-    case 'p':
+    /*case 'p':
     if (i_x < 100 && i_y >0)
     {
         i_x++;
@@ -130,8 +147,8 @@ char arrow, arrow_1;
         a_wd(i_y,i_x);
         usleep(1000);
     }
-        break;
-    
+        break;*/
+
     default:
         break;
     }
@@ -139,4 +156,5 @@ char arrow, arrow_1;
 }
     system("pause");
 }
+
 

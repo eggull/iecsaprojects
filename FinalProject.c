@@ -46,6 +46,11 @@ void a_d(int i_y, int i_x){
         gotoxy(i_x, i_y);printf("\1");
         fflush(stdout);
 }
+void a_wd(int i_y, int i_x){
+        gotoxy(i_x-1, i_y+1); printf(" ");
+        gotoxy(i_x, i_y);printf("\1");
+        fflush(stdout);
+}
 void character(){
 
 }
@@ -55,14 +60,30 @@ void object(){
 void speed(){
 
 }
+/*void a_2(char arrow_1, char arrow){
+                    if(arrow_1 == 'd' && arrow == 'w')
+                    {
+                        arrow = 'p'; // Diag to norest
+                    }
+}*/
 int main(){
 
 int lenght=20, width=20, i_x=10, i_y=10;
 
 while(1){
-char arrow;
-    if(_kbhit()){
-       arrow = _getch();
+char arrow, arrow_1;
+    if(_kbhit()) //Fix the getch, when press a letter, for example; a after w, a is the new getch letter, but u held down the letter w and u stop pressing the letter a, w must be the new getch letter, but getch isn't reading the letter w. 
+    {
+        arrow = _getch();
+            if (_getch() == 'w')
+            {
+                arrow = 'w';
+            }
+        arrow_1 = _getch();
+        if(arrow_1 == 'd' && arrow == 'w')
+        {
+            arrow = 'p'; // Diag to norest
+        }
     switch (arrow)
     {
     case 'w':
@@ -70,7 +91,7 @@ char arrow;
     {
         i_y--;
         a_w(i_y,i_x);
-        usleep(80000);
+        usleep(1000);
     }
         break;
 
@@ -79,28 +100,38 @@ char arrow;
     {
         i_x--;
         a_a(i_y,i_x);
-        usleep(20000);
+        usleep(5000);
     }
         break;
 
     case 's':
-    if (i_y < 100)
+    if (i_y < 200)
     {
         i_y++;
         a_s(i_y,i_x);
-        usleep(80000);
+        usleep(5000);
     }
         break;
 
     case 'd':
-    if (i_x < 100)
+    if (i_x < 200)
     {
         i_x++;
         a_d(i_y,i_x);
-        usleep(20000);
+        usleep(1000);
     }
         break;
 
+    case 'p':
+    if (i_x < 100 && i_y >0)
+    {
+        i_x++;
+        i_y--;
+        a_wd(i_y,i_x);
+        usleep(1000);
+    }
+        break;
+    
     default:
         break;
     }

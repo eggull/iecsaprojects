@@ -4,6 +4,8 @@
         "stdio.h": "c",
         "conio.h": "c",
         "stdlib.h": "c",
-        "string": "c"
+        "string": "c",
+        "windows.h": "c",
+        "string_view": "c"
     }
 }

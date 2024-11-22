@@ -21,23 +21,23 @@ void gotoxy(int x,int y){
  }
 
 void a_w(int i_y, int i_x){ // The character moves on the positive y-axis
-        gotoxy(i_x, i_y+1); printf(" ");
-        gotoxy(i_x, i_y); printf("%c", 219);
+        gotoxy(i_x, i_y); erase(i_x,i_y+1);
+        gotoxy(i_x, i_y); character(i_x,i_y);
         fflush(stdout);
 }
 void a_a(int i_y, int i_x){ 
-        gotoxy(i_x+1, i_y); printf(" ");
-        gotoxy(i_x, i_y);printf("\1");
+        gotoxy(i_x, i_y); erase(i_x+1,i_y);
+        gotoxy(i_x, i_y); character(i_x,i_y);
         fflush(stdout);
 }
 void a_s(int i_y, int i_x){
-        gotoxy(i_x, i_y-1); printf(" ");
-        gotoxy(i_x, i_y);printf("\1");
+        gotoxy(i_x, i_y); erase(i_x,i_y-1);
+        gotoxy(i_x, i_y); character(i_x,i_y);
         fflush(stdout);
 }
 void a_d(int i_y, int i_x){
-        gotoxy(i_x-1, i_y); printf(" ");
-        gotoxy(i_x, i_y);printf("\1");
+        gotoxy(i_x, i_y); erase(i_x-1,i_y);
+        gotoxy(i_x, i_y); character(i_x,i_y);
         fflush(stdout);
 }
 void a_wd(int i_y, int i_x){
@@ -45,8 +45,48 @@ void a_wd(int i_y, int i_x){
         gotoxy(i_x, i_y);printf("\1");
         fflush(stdout);
 }
-void character(){
-
+void character(int i_x, int i_y){
+    int i, ix, iy;
+    ix = i_x;
+    iy = i_y;
+    gotoxy(ix-3, iy+2);
+    for(i=0; i<=2; i++)
+        printf("%c", 219);
+        printf("=======");
+    gotoxy(ix-4, iy+1);
+    for(i=0; i<=6; i++)
+        printf("%c", 219);
+    gotoxy(ix-2, iy);
+    for(i=0; i<=9; i++)
+        printf("%c", 219);
+        printf("%c", 254);
+    gotoxy(ix-4, iy-1);
+    for(i=0; i<=6; i++)
+        printf("%c", 219);
+    gotoxy(ix-3, iy-2);
+    for(i=0; i<=2; i++)
+        printf("%c", 219);
+        printf("=======");
+}
+void erase(int i_x, int i_y){
+int i, ix, iy;
+    ix = i_x;
+    iy = i_y;
+    gotoxy(ix-4, iy+2);
+    for(i=0; i<=10; i++)
+        printf(" ");
+    gotoxy(ix-5, iy+1);
+    for(i=0; i<=10; i++)
+        printf(" ");
+    gotoxy(ix-3, iy);
+    for(i=0; i<=11; i++)
+        printf(" ");
+    gotoxy(ix-5, iy-1);
+    for(i=0; i<=10; i++)
+        printf(" ");
+    gotoxy(ix-4, iy-2);
+    for(i=0; i<=10; i++)
+        printf(" ");
 }
 void object_1(int i_x, int width){ //Identificate the position of the client, and the max height
     
@@ -98,7 +138,6 @@ char arrow, arrow_1, last_arrow;
     case 'w':
     if (i_y > 0)
     {
-        usleep(1000);
         i_y--;
         a_w(i_y,i_x);
     }
@@ -108,7 +147,6 @@ char arrow, arrow_1, last_arrow;
     {
         i_x--;
         a_a(i_y,i_x);
-        usleep(5000);
     }
         break;
     case 's':
@@ -116,7 +154,6 @@ char arrow, arrow_1, last_arrow;
     {
         i_y++;
         a_s(i_y,i_x);
-        usleep(5000);
     }
         break;
     case 'd':
@@ -125,7 +162,6 @@ char arrow, arrow_1, last_arrow;
     {
         i_x++;
         a_d(i_y,i_x);
-        usleep(1000);
     }
         break;
 

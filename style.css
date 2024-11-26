@@ -1,197 +1,186 @@
-h1{
-    background-color:#000000;
-    color:#ccc;
-    padding: 10px;
-    margin-bottom: 30px;
-    font-family:Trebuchet;
-    font-size:300%}
-    h2 {
-        font-size: 1.8em;
-        margin-top: 20px;
-    }
-    p{
-        font-size: 2em;
-        margin-bottom: 10px;
-        line-height: 1.6;
-    }
-    main {
-        padding: 20px;
-    }
-    .noticia {
-        background-color: rgb(197, 197, 197);
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 30px;
-        padding: 30px;
-        gap: 20px;
-        display: flex;
-        font-family: monospace;
-    }
-    .det {
-        background-color: rgb(255, 255, 255);
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 30px;
-        padding: 15px;
-        gap: 20px;
-        display: flex;
-        font-family: monospace;
-    }
-    .noticia img {
-        width: 20%;
-        height: auto;
-        border-radius: 5px;
-    }
-    body{
-    background: #333;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    /* Dark mode colors and gradient */
-    background: #121212; /* Fallback for browsers that don't support gradients */
-    background: linear-gradient(
-      135deg,
-      #121212 25%,
-      #1a1a1a 25%,
-      #1a1a1a 50%,
-      #121212 50%,
-      #121212 75%,
-      #1a1a1a 75%,
-      #1a1a1a
-    );
-    background-size: 40px 40px;
-  
-    /* Animation */
-    animation: move 4s linear infinite;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #121212 25%, #1a1a1a 25%, #1a1a1a 50%, #121212 50%, #121212 75%, #1a1a1a 75%, #1a1a1a);
+  background-size: 40px 40px;
+  color: #ddd;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  animation: moveBackground 4s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
   }
-  
-  @keyframes move {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 40px 40px;
-    }
-      }
-    .btn{
-        display: flex;
-        margin-top: 15px;
-        padding: 10px 40px;
-        color: #333;
-        text-decoration: none;
-        font-size: 2em;
-        font-family: monospace;
+  100% {
+    background-position: 40px 40px;
   }
-    .input__container {
-        position: relative;
-        background: #f0f0f0;
-        padding: 20px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 15px;
-        border: 4px solid #000;
-        max-width: 350px;
-        transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
-        transform-style: preserve-3d;
-        transform: rotateX(10deg) rotateY(-10deg);
-        perspective: 1000px;
-        box-shadow: 10px 10px 0 #000;
-      }
-      
-      .input__container:hover {
-        transform: rotateX(5deg) rotateY(1 deg) scale(1.05);
-        box-shadow: 25px 25px 0 -5px #e9b50b, 25px 25px 0 0 #000;
-      }
-      
-      .shadow__input {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        bottom: 0;
-        z-index: -1;
-        transform: translateZ(-50px);
-        background: linear-gradient(
-          45deg,
-          rgba(255, 107, 107, 0.4) 0%,
-          rgba(255, 107, 107, 0.1) 100%
-        );
-        filter: blur(20px);
-      }
-      
-      .input__button__shadow {
-        cursor: pointer;
-        border: 3px solid #000;
-        background: #e9b50b;
-        transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        transform: translateZ(20px);
-        position: relative;
-        z-index: 3;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
-      
-      .input__button__shadow:hover {
-        background: #e9b50b;
-        transform: translateZ(10px) translateX(-5px) translateY(-5px);
-        box-shadow: 5px 5px 0 0 #000;
-      }
-      
-      .input__button__shadow svg {
-        fill: #000;
-        width: 25px;
-        height: 25px;
-      }
-      
-      .input__search {
-        width: 100%;
-        outline: none;
-        border: 3px solid #000;
-        padding: 15px;
-        font-size: 18px;
-        background: #fff;
-        color: #000;
-        transform: translateZ(10px);
-        transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
-        position: relative;
-        z-index: 3;
-        font-family: "Roboto", Arial, sans-serif;
-        letter-spacing: -0.5px;
-      }
-      
-      .input__search::placeholder {
-        color: #666;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
-      
-      .input__search:hover,
-      .input__search:focus {
-        background: #f0f0f0;
-        transform: translateZ(20px) translateX(-5px) translateY(-5px);
-        box-shadow: 5px 5px 0 0 #000;
-      }
-      
-      .input__container::before {
-        content: "USERNAME";
-        position: absolute;
-        top: -15px;
-        left: 20px;
-        background: #e9b50b;
-        color: #000;
-        font-weight: bold;
-        padding: 5px 10px;
-        font-size: 14px;
-        transform: translateZ(50px);
-        z-index: 4;
-        border: 2px solid #000;
-      }
+}
+.watermark1 {
+  position: fixed;
+  top: 7%;
+  left: 5%;
+  width: 500px;
+  height: 100%;
+  background-image: url('nasa.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.1;  
+  pointer-events: none; 
+  z-index: 1000;
+}
+.watermark2 {
+  position: fixed;
+  top: 7%;
+  left: 70%;
+  width: 500px;
+  height: 100%;
+  background-image: url('nasa.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.1;  
+  pointer-events: none; 
+  z-index: 1000;
+}
+.watermark3 {
+  position: fixed;
+  top: 55%;
+  left: 38%;
+  width: 500px;
+  height: 100%;
+  background-image: url('nasa.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.1;  
+  pointer-events: none; 
+  z-index: 1000;
+}
+
+
+/* Header */
+.noticia {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  background-color: #222;
+  border-radius: 15px;
+  padding: 20px 40px; 
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease;
+  z-index: 10; 
+}
+
+.noticia:hover {
+  transform: translateY(-10px);
+}
+
+.noticia h1 {
+  font-size: 4em;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.noticia p {
+  font-size: 1.5em;
+  color: #bbb;
+  font-weight: 300;
+  margin-top: 5px;
+}
+
+/* Main Content */
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 100px;
+}
+
+/* Noticias */
+.det {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.3s ease;
+}
+
+.det:hover {
+  transform: scale(1.03);
+}
+
+.det img {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.det img:hover {
+  transform: scale(1.05);
+}
+
+.det h2 {
+  font-size: 2.5em;
+  color: #333;
+  font-weight: bold;
+}
+
+.det p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #333;
+  margin-top: 15px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #e9b50b;
+  padding: 18px 30px;
+  font-size: 1.8em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  text-transform: uppercase;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  background-color: #c6a509;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .det p {
+    font-size: 1.1em;
+  }
+  .det h2 {
+    font-size: 2.2em;
+  }
+  .btn {
+    font-size: 1.4em;
+    padding: 14px 24px;
+  }
+}

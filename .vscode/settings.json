@@ -6,6 +6,8 @@
         "stdlib.h": "c",
         "string": "c",
         "windows.h": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "time.h": "c",
+        "pthread.h": "c"
     }
 }

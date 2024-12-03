@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <pthread.h>
 pthread_t player, asteroid_1, asteroid_2 , asteroid_3, asteroid_4, asteroid_5, asteroid_6, asteroid_7, asteroid_8, cls;
+pthread_mutex_t mutex;
 int lenght=60, width=150;
 int main();
 void gotoxy(int x,int y)
@@ -26,7 +27,7 @@ void asteroids_1()
     while(y < lenght)
     {   
         gotoxy(v_ix, y); printf("*");
-        Sleep(400);
+        Sleep(40);
         gotoxy(v_ix, y); printf(" ");
         y++;
     }
@@ -40,7 +41,7 @@ void asteroids_2()
     while(y > 1)
     {
         gotoxy(v_ix, y); printf("*");
-        Sleep(400);
+        Sleep(40);
         gotoxy(v_ix, y); printf(" ");
         y--;
     }
@@ -54,10 +55,9 @@ void asteroids_3()
     while(x < width)
     {   
         gotoxy(x, v_iy); printf("*");
-        Sleep(300);
+        Sleep(30);
         gotoxy(x, v_iy); printf(" ");
         x++;
-        
     }
 }
 void asteroids_4()
@@ -69,7 +69,7 @@ void asteroids_4()
     while(x > 1)
     {
         gotoxy(x, v_iy); printf("*");
-        Sleep(300);
+        Sleep(30);
         gotoxy(x, v_iy); printf(" ");
         x--;
     }
@@ -83,7 +83,7 @@ void asteroids_5()
     while(v_ix > 1 && y > 1)
     {   
         gotoxy(v_ix, y); printf("*");
-        Sleep(400);
+        Sleep(40);
         gotoxy(v_ix, y); printf(" ");
         v_ix--;
         y--;
@@ -98,7 +98,7 @@ void asteroids_6()
     while(v_ix < width && y < lenght)
     {
         gotoxy(v_ix, y); printf("*");
-        Sleep(400);
+        Sleep(40);
         gotoxy(v_ix, y); printf(" ");
         v_ix++;
         y++;
@@ -113,10 +113,11 @@ void asteroids_7()
     while(x < width && v_iy > 1)
     {
         gotoxy(x, v_iy); printf("*");
-        Sleep(400);
+        Sleep(40);
         gotoxy(x, v_iy); printf(" ");
         x++;
         v_iy--;
+        // return 1;
     }
 }
 void asteroids_8()
@@ -128,10 +129,11 @@ void asteroids_8()
     while(x > 1 && v_iy < lenght)
     {
         gotoxy(x, v_iy); printf("*");
-        Sleep(400);
+        Sleep(40);
         gotoxy(x, v_iy); printf(" ");
         x--;
         v_iy++;
+        // return 0;
     }
 }
 void squar()
@@ -259,91 +261,34 @@ while(1)
   }
 }
 }
-void *as_1(void *time_1)
-{
+void *as_1(void *arg)
+{   
     while(1)
     {
     asteroids_1();
-    Sleep(500);
-    }
-}
-void *as_2(void *time_2)
-{
-    while(1)
-    {
-    asteroids_2();
-    Sleep(500);
-    }
-}
-void *as_3(void *time_3)
-{
-    while(1)
-    {
+    asteroids_2();                                 
     asteroids_3();
-    Sleep(500);
-    }
-}
-void *as_4(void *time_4)
-{
-    while(1)
-    {
     asteroids_4();
-    Sleep(500);
-    }
-}
-void *as_5(void *time_5)
-{
-    while(1)
-    {
     asteroids_5();
-    Sleep(500);
-    }
-}
-void *as_6(void *time_6)
-{
-    while(1)
-    {
     asteroids_6();
-    Sleep(500);
-    }
-}
-void *as_7(void *time_7)
-{
-    while(1)
-    {
     asteroids_7();
-    Sleep(500);
-    }
-}
-void *as_8(void *time_8)
-{
-    while(1)
-    {
     asteroids_8();
-    Sleep(500);
     }
 }
-/*void *clear(void *clr)
-{
-    while(1)
-    {
-    system("cls");
-    }
-}*/
 int main()
 {   
     srand(time(NULL));
     squar();
+    pthread_mutex_init(&mutex, NULL);
     pthread_create(&player, NULL, &mov, NULL);
     pthread_create(&asteroid_1, NULL, &as_1, NULL);
-    pthread_create(&asteroid_2, NULL, &as_2, NULL);
-    pthread_create(&asteroid_3, NULL, &as_3, NULL);
-    pthread_create(&asteroid_4, NULL, &as_4, NULL);
-    pthread_create(&asteroid_5, NULL, &as_5, NULL);
-    pthread_create(&asteroid_6, NULL, &as_6, NULL);
-    pthread_create(&asteroid_7, NULL, &as_7, NULL);
-    pthread_create(&asteroid_8, NULL, &as_8, NULL);
-    //pthread_create(&cls, NULL, &clear, NULL);
+    pthread_create(&asteroid_2, NULL, &as_1, NULL);
+    pthread_create(&asteroid_3, NULL, &as_1, NULL);
+    pthread_create(&asteroid_4, NULL, &as_1, NULL);
+    pthread_create(&asteroid_5, NULL, &as_1, NULL);
+    pthread_create(&asteroid_6, NULL, &as_1, NULL);
+    pthread_create(&asteroid_7, NULL, &as_1, NULL);
+    pthread_create(&asteroid_8, NULL, &as_1, NULL);
     pthread_join(player, NULL);
     pthread_join(asteroid_1, NULL);
     pthread_join(asteroid_2, NULL);
@@ -353,6 +298,6 @@ int main()
     pthread_join(asteroid_6, NULL);
     pthread_join(asteroid_7, NULL);
     pthread_join(asteroid_8, NULL);
-    //pthread_join(cls, NULL);
+    pthread_mutex_destroy(&mutex);
 }
 

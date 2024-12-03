@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <time.h>
 #include <windows.h>
 #include <pthread.h>
-pthread_t player, asteroid_1, asteroid_2 , asteroid_3, asteroid_4, asteroid_5, asteroid_6, asteroid_7, asteroid_8;
+pthread_t player, asteroid_1, asteroid_2 , asteroid_3, asteroid_4, asteroid_5, asteroid_6, asteroid_7, asteroid_8, cls;
 int lenght=60, width=150;
 void gotoxy(int x,int y)
 {
@@ -16,121 +15,249 @@ void gotoxy(int x,int y)
       dwPos.Y= y;
       SetConsoleCursorPosition(hcon,dwPos);
 }
+int random()
+{   
+    srand(time(0));
+    return rand() % 8 + 1;
+}
+void asteroids1()
+{   
+    int v_iy1, x = width;
+    v_iy1 = rand() % lenght; 
+    while(x > 1)
+    {
+        gotoxy(x, v_iy1); printf("*");
+        Sleep(30);
+        gotoxy(x, v_iy1); printf(" ");
+        x--;
+    }
+}
+void asteroids2()
+{   
+    int v_iy2, x = width;
+    v_iy2 =rand() % lenght; 
+    while(x > 1)
+    {
+        gotoxy(x, v_iy2); printf("*");
+        Sleep(30);
+        gotoxy(x, v_iy2); printf(" ");
+        x--;
+    }
+}
+void asteroids3()
+{   
+    int v_iy3, x = width;
+    v_iy3 =rand() % lenght; 
+    while(x > 1)
+    {
+        gotoxy(x, v_iy3); printf("*");
+        Sleep(30);
+        gotoxy(x, v_iy3); printf(" ");
+        x--;
+    }
+}
+void asteroids4()
+{   
+    int v_iy4, x = width;
+    v_iy4 =rand() % lenght; 
+    while(x > 1)
+    {
+        gotoxy(x, v_iy4); printf("*");
+        Sleep(30);
+        gotoxy(x, v_iy4); printf(" ");
+        x--;
+    }
+}
+void asteroids5()
+{   
+    int v_iy5, x = width;
+    v_iy5 =rand() % lenght; 
+    while(x > 1)
+    {
+        gotoxy(x, v_iy5); printf("*");
+        Sleep(30);
+        gotoxy(x, v_iy5); printf(" ");
+        x--;
+    }
+}
+void asteroids6()
+{   
+    int v_iy6, x = width;
+    v_iy6 =rand() % lenght; 
+    while(x > 1)
+    {
+        gotoxy(x, v_iy6); printf("*");
+        Sleep(30);
+        gotoxy(x, v_iy6); printf(" ");
+        x--;
+    }
+}
+void asteroids7()
+{   
+    int v_iy7, x = width;
+    v_iy7 =rand() % lenght; 
+    while(x > 1)
+    {
+        gotoxy(x, v_iy7); printf("*");
+        Sleep(30);
+        gotoxy(x, v_iy7); printf(" ");
+        x--;
+    }
+}
+void asteroids8()
+{   
+    int v_iy8, x = width;
+    v_iy8 =rand() % lenght; 
+    while(x > 1)
+    {
+        gotoxy(x, v_iy8); printf("*");
+        Sleep(30);
+        gotoxy(x, v_iy8); printf(" ");
+        x--;
+    }
+}
 void asteroids_1()
-{
-    int r, v_ix, v_iy, y = 1, x = 1;
-    v_ix = 2 + rand() % width;
-    v_iy = 2 + rand() % lenght; 
-    y = 1;
-    while(y < lenght)
-    {   
-        gotoxy(v_ix, y); printf("*");
-        Sleep(40);
-        gotoxy(v_ix, y); printf(" ");
-        y++;
+{   
+    Sleep(10);
+    int r = random();
+    switch (r)
+    {
+    case 1: asteroids1(); break;
+    case 2: asteroids2(); break;
+    case 3: asteroids3(); break;
+    case 4: asteroids4(); break;
+    case 5: asteroids5(); break;
+    case 6: asteroids6(); break;
+    case 7: asteroids7(); break;
+    case 8: asteroids8(); break;
+    default:
+        break;
     }
 }
 void asteroids_2()
-{
-    int r, v_ix, v_iy, y = 1, x = 1;
-    v_ix = 2 + rand() % width;
-    v_iy = 2 + rand() % lenght; 
-    y = lenght;
-    while(y > 1)
+{   
+    Sleep(20);
+    int r = random();
+    switch (r)
     {
-        gotoxy(v_ix, y); printf("*");
-        Sleep(40);
-        gotoxy(v_ix, y); printf(" ");
-        y--;
+    case 1: asteroids1(); break;
+    case 2: asteroids2(); break;
+    case 3: asteroids3(); break;
+    case 4: asteroids4(); break;
+    case 5: asteroids5(); break;
+    case 6: asteroids6(); break;
+    case 7: asteroids7(); break;
+    case 8: asteroids8(); break;
+    default:
+        break;
     }
 }
 void asteroids_3()
-{
-    int r, v_ix, v_iy, y = 1, x = 1;
-    v_ix = 2 + rand() % width;
-    v_iy = 2 + rand() % lenght; 
-    x  = 1;
-    while(x < width)
-    {   
-        gotoxy(x, v_iy); printf("*");
-        Sleep(30);
-        gotoxy(x, v_iy); printf(" ");
-        x++;
-        
+{   
+    Sleep(30);
+    int r = random();
+    switch (r)
+    {
+    case 1: asteroids1(); break;
+    case 2: asteroids2(); break;
+    case 3: asteroids3(); break;
+    case 4: asteroids4(); break;
+    case 5: asteroids5(); break;
+    case 6: asteroids6(); break;
+    case 7: asteroids7(); break;
+    case 8: asteroids8(); break;
+    default:
+        break;
     }
 }
 void asteroids_4()
-{
-    int r, v_ix, v_iy, y = 1, x = 1;
-    v_ix = 2 + rand() % width;
-    v_iy = 2 + rand() % lenght; 
-    x = width;
-    while(x > 1)
+{   
+    Sleep(40);
+    int r = random();
+    switch (r)
     {
-        gotoxy(x, v_iy); printf("*");
-        Sleep(30);
-        gotoxy(x, v_iy); printf(" ");
-        x--;
+    case 1: asteroids1(); break;
+    case 2: asteroids2(); break;
+    case 3: asteroids3(); break;
+    case 4: asteroids4(); break;
+    case 5: asteroids5(); break;
+    case 6: asteroids6(); break;
+    case 7: asteroids7(); break;
+    case 8: asteroids8(); break;
+    default:
+        break;
     }
 }
 void asteroids_5()
-{
-    int r, v_ix, v_iy, y = 1, x = 1;
-    v_ix = 2 + rand() % width;
-    v_iy = 2 + rand() % lenght; 
-    y = lenght;
-    while(v_ix > 1 && y > 1)
-    {   
-        gotoxy(v_ix, y); printf("*");
-        Sleep(40);
-        gotoxy(v_ix, y); printf(" ");
-        v_ix--;
-        y--;
+{   
+    Sleep(50);
+    int r = random();
+    switch (r)
+    {
+    case 1: asteroids1(); break;
+    case 2: asteroids2(); break;
+    case 3: asteroids3(); break;
+    case 4: asteroids4(); break;
+    case 5: asteroids5(); break;
+    case 6: asteroids6(); break;
+    case 7: asteroids7(); break;
+    case 8: asteroids8(); break;
+    default:
+        break;
     }
 }
 void asteroids_6()
-{
-    int r, v_ix, v_iy, y = 1, x = 1;
-    v_ix = 2 + rand() % width;
-    v_iy = 2 + rand() % lenght; 
-    y = 1;
-    while(v_ix < width && y < lenght)
+{   
+    Sleep(60);
+    int r = random();
+    switch (r)
     {
-        gotoxy(v_ix, y); printf("*");
-        Sleep(40);
-        gotoxy(v_ix, y); printf(" ");
-        v_ix++;
-        y++;
+    case 1: asteroids1(); break;
+    case 2: asteroids2(); break;
+    case 3: asteroids3(); break;
+    case 4: asteroids4(); break;
+    case 5: asteroids5(); break;
+    case 6: asteroids6(); break;
+    case 7: asteroids7(); break;
+    case 8: asteroids8(); break;
+    default:
+        break;
     }
 }
 void asteroids_7()
-{
-    int r, v_ix, v_iy, y = 1, x = 1;
-    v_ix = 2 + rand() % width;
-    v_iy = 2 + rand() % lenght; 
-    x = 1;
-    while(x < width && v_iy > 1)
+{   
+    Sleep(70);
+    int r = random();
+    switch (r)
     {
-        gotoxy(x, v_iy); printf("*");
-        Sleep(40);
-        gotoxy(x, v_iy); printf(" ");
-        x++;
-        v_iy--;
+    case 1: asteroids1(); break;
+    case 2: asteroids2(); break;
+    case 3: asteroids3(); break;
+    case 4: asteroids4(); break;
+    case 5: asteroids5(); break;
+    case 6: asteroids6(); break;
+    case 7: asteroids7(); break;
+    case 8: asteroids8(); break;
+    default:
+        break;
     }
 }
 void asteroids_8()
-{
-    int r, v_ix, v_iy, y = 1, x = 1;
-    v_ix = 2 + rand() % width;
-    v_iy = 2 + rand() % lenght; 
-    x = width;
-    while(x > 1 && v_iy < lenght)
+{   
+    Sleep(80);
+    int r = random();
+    switch (r)
     {
-        gotoxy(x, v_iy); printf("*");
-        Sleep(40);
-        gotoxy(x, v_iy); printf(" ");
-        x--;
-        v_iy++;
+    case 1: asteroids1(); break;
+    case 2: asteroids2(); break;
+    case 3: asteroids3(); break;
+    case 4: asteroids4(); break;
+    case 5: asteroids5(); break;
+    case 6: asteroids6(); break;
+    case 7: asteroids7(); break;
+    case 8: asteroids8(); break;
+    default:
+        break;
     }
 }
 void squar()
@@ -270,6 +397,7 @@ void *as_2(void *time_2)
     while(1)
     {
     asteroids_2();
+
     }
 }
 void *as_3(void *time_3)
@@ -314,9 +442,15 @@ void *as_8(void *time_8)
     asteroids_8();
     }
 }
+/*void *clear(void *clr)
+{
+    while(1)
+    {
+    system("cls");
+    }
+}*/
 int main()
 {   
-    srand(time(0));
     squar();
     pthread_create(&player, NULL, &mov, NULL);
     pthread_create(&asteroid_1, NULL, &as_1, NULL);
@@ -327,6 +461,7 @@ int main()
     pthread_create(&asteroid_6, NULL, &as_6, NULL);
     pthread_create(&asteroid_7, NULL, &as_7, NULL);
     pthread_create(&asteroid_8, NULL, &as_8, NULL);
+    //pthread_create(&cls, NULL, &clear, NULL);
     pthread_join(player, NULL);
     pthread_join(asteroid_1, NULL);
     pthread_join(asteroid_2, NULL);
@@ -336,5 +471,6 @@ int main()
     pthread_join(asteroid_6, NULL);
     pthread_join(asteroid_7, NULL);
     pthread_join(asteroid_8, NULL);
+    //pthread_join(cls, NULL);
 }
 
